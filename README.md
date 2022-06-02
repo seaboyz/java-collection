@@ -4,7 +4,6 @@
     - [Concept](#concept)
       - [Collections](#collections-1)
     - [Roadmap](#roadmap)
-  - [Hierarchy of Collections](#hierarchy-of-collections)
   - [Pre-Collection API](#pre-collection-api)
     - [arrays](#arrays)
       - [work with primitive types and object references](#work-with-primitive-types-and-object-references)
@@ -12,6 +11,17 @@
       - [Arrays class](#arrays-class)
     - [Vector](#vector)
     - [Hashtable](#hashtable)
+  - [The diffrent collection needs](#the-diffrent-collection-needs)
+    - [Arrays and the Arrays class](#arrays-and-the-arrays-class)
+    - [Position based access](#position-based-access)
+    - [Uniqueness](#uniqueness)
+    - [Retrieval mechanisms](#retrieval-mechanisms)
+    - [Others](#others)
+  - [Collection Types](#collection-types)
+    - [Collections types](#collections-types)
+    - [Implementations](#implementations)
+    - [Examples](#examples)
+  - [Hierarchy of Collections](#hierarchy-of-collections)
 
 # Collections 
 
@@ -50,10 +60,7 @@
 * Lear the collection type, usages and code examples
   
 
-## Hierarchy of Collections
-![](/images/java-collection-hierarchy.png)
-  
-https://github.com/seaboyz/coding-interview/blob/990a49ddc8d6e9c2b4744faa95eecc8ec95f158e/Sanbox/src/App.java#L6
+
 
 ## Pre-Collection API
 ### arrays
@@ -89,3 +96,44 @@ Arrays.binarySearch(names, "name 4");
 ```
 ### Vector
 ### Hashtable
+
+## The diffrent collection needs
+### Arrays and the Arrays class
+  * Isn't that enough?
+### Position based access
+  * Strorage and retrieval by index
+  * Needs sorting methods
+  * Ordered vs Unordered
+### Uniqueness
+  * Are duplicates allowed?
+  * Affects adding behavior
+  * No need for position based access
+### Retrieval mechanisms
+  * Index based retrieval
+  * Key based retrieval
+  * Presence-only retrieval
+### Others
+  * Mutability
+  * Concurrency requirements
+
+## Collection Types
+### Collections types
+* Define the contract of the collection
+  * List
+  * Set
+  * Map Queue
+### Implementations
+* How it acturally works behind the scenes
+### Examples
+* #### List
+  * Defines the contract/behavior
+* ##### ArrayList
+  * An implementation of List contract
+* ##### LinkedList
+  * Another implementation of List contract
+
+
+## Hierarchy of Collections
+![](/images/java-collection-hierarchy.png)
+  
+https://github.com/seaboyz/coding-interview/blob/990a49ddc8d6e9c2b4744faa95eecc8ec95f158e/Sanbox/src/App.java#L6
