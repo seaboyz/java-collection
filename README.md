@@ -3,6 +3,7 @@
   - [Agenda](#agenda)
     - [Concept](#concept)
       - [Collections](#collections-1)
+    - [Roadmap](#roadmap)
   - [Hierarchy of Collections](#hierarchy-of-collections)
 
 # Collections 
@@ -31,6 +32,15 @@
   * LinkedList
 * Maps
   * HashMap
+
+### Roadmap
+* Pre-Collection API
+* Diffent Collection needs
+* Introducing ArrayList
+* Concepts and fundamentals
+* Zoom up to Collections interface
+* Tackle individual collections types
+* Lear the collection type, usages and code examples
   
 
 ## Hierarchy of Collections
