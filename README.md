@@ -22,6 +22,17 @@
     - [Implementations](#implementations)
     - [Examples](#examples)
   - [Hierarchy of Collections](#hierarchy-of-collections)
+  - [ArrayList](#arraylist)
+  - [O notation](#o-notation)
+    - [Tradeoffs](#tradeoffs)
+    - [Time Effieciency](#time-effieciency)
+      - [How do you measure time efficiency?](#how-do-you-measure-time-efficiency)
+      - [O(N)](#on)
+        - [Linear Time](#linear-time)
+        - [Constant Time](#constant-time)
+        - [Logarithmic Time](#logarithmic-time)
+        - [Quadratic Time](#quadratic-time)
+        - [How O-Notation matters](#how-o-notation-matters)
 
 # Collections 
 
@@ -131,9 +142,84 @@ Arrays.binarySearch(names, "name 4");
   * An implementation of List contract
 * ##### LinkedList
   * Another implementation of List contract
-
+* #### Set
+  * HashSet
+  * LinkedHashSet
+  * TreeSet
+* Q
+* #### Map
+  * HashMap
+  * TreeMap
+* #### Queue
+  * PriorityQueue
+* #### Tradeoffs
+  * finding what is the right tool for the job
 
 ## Hierarchy of Collections
 ![](/images/java-collection-hierarchy.png)
   
 https://github.com/seaboyz/coding-interview/blob/990a49ddc8d6e9c2b4744faa95eecc8ec95f158e/Sanbox/src/App.java#L6
+
+## ArrayList
+* "Replacement" for arrays
+![](/images/ArrayList.png)
+```java
+ArrayList<String> names = new ArrayList<>();
+for(int i = 0; i < 20; i++){
+    names.add("name " + i);
+}
+for(int i = 0; i < 20; i++){
+    System.out.println(names.get(i));
+}
+```
+
+## O notation
+### Tradeoffs
+* Feature requirements
+* Efficiency
+  * Time
+  * Space
+    * Usualy proportional to size to be stored.
+
+### Time Effieciency
+  * How long does it take?
+  * Storage time - single item
+  * Retrieval time - sigle item
+  * Retrival time - search
+#### How do you measure time efficiency?
+* Bigger collecion = longer times
+* A factor of N (number of elements)
+#### O(N)
+* Big O notation
+* How good / bad is the depencency on N?
+* Rough imprecise measurement/classification
+* Broad buckets
+* it assumes the worst case estimate
+* Rough/board estimate
+
+##### Linear Time
+* O(N) - depends on number of elements
+
+##### Constant Time
+* O(1)
+
+##### Logarithmic Time
+* O(log N) 
+* Binary search
+  1. Look at the middle
+  2. if greater, take first half
+  3. if lesser, take second half
+  4. Repeat
+* has to be sorted first
+* Time doesn't linearly increase with size of N
+
+##### Quadratic Time
+* find duplecated element
+* O(N<sup>2</sup>)
+
+##### How O-Notation matters
+* Inherent performance characteristics
+  * Search a list(not sorted)
+* Implementation-based characteristics
+  * Looking up by index(ArrayList vs LinkedList)
+* Underlying factor
