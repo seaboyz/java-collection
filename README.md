@@ -5,6 +5,13 @@
       - [Collections](#collections-1)
     - [Roadmap](#roadmap)
   - [Hierarchy of Collections](#hierarchy-of-collections)
+  - [Pre-Collection API](#pre-collection-api)
+    - [arrays](#arrays)
+      - [work with primitive types and object references](#work-with-primitive-types-and-object-references)
+      - [The problem with arrays](#the-problem-with-arrays)
+      - [Arrays class](#arrays-class)
+    - [Vector](#vector)
+    - [Hashtable](#hashtable)
 
 # Collections 
 
@@ -47,3 +54,38 @@
 ![](/images/java-collection-hierarchy.png)
   
 https://github.com/seaboyz/coding-interview/blob/990a49ddc8d6e9c2b4744faa95eecc8ec95f158e/Sanbox/src/App.java#L6
+
+## Pre-Collection API
+### arrays
+```java
+int[] numbers;
+numbers = new int[10];
+numbers[0] = 1;
+System.out.println(numbers[0]);
+```
+#### work with primitive types and object references
+```java
+Date[] dates = new Date[10];
+dates[0] = new Date();
+```
+#### The problem with arrays
+```java
+* Limited data structure
+* Does not have methods on its own
+* Have to use `Arrays` class to do things
+```
+#### Arrays class
+* `Arrays.asList()`
+* `Arrays.compare()`
+* `Arrays.copyOf()`
+```java
+// String[] names = {"John", "Jane", "Joe"};
+String[] names = new String[10];
+Arrays.fill(names, "name ");
+for(int i = 0; i < names.length; i++) {
+  names[i] = names[i] + i;
+}
+Arrays.binarySearch(names, "name 4");
+```
+### Vector
+### Hashtable
