@@ -34,8 +34,15 @@
         - [Quadratic Time](#quadratic-time)
         - [How O-Notation matters](#how-o-notation-matters)
   - [How iterators work?](#how-iterators-work)
-    - [interfaces](#interfaces)
-    - [Iterators](#iterators)
+    - [Feature](#feature)
+    - [for each loop](#for-each-loop)
+    - [Iterator vs Iterable](#iterator-vs-iterable)
+      - [Iterator](#iterator)
+      - [Iterable](#iterable)
+    - [Example: ArrayList](#example-arraylist)
+  - [Equality in OOP](#equality-in-oop)
+  - [Hashing and hash codes](#hashing-and-hash-codes)
+    - [The hashing concept](#the-hashing-concept)
 
 # Collections 
 
@@ -228,7 +235,18 @@ for(int i = 0; i < 20; i++){
 * Underlying factor
 
 ## How iterators work?
-### interfaces
+### Feature
+* each iterator has its own state(every time you get a iterator form .iterator(), it returns a new iterator)
+* iterator does not like the collection to be modified
+
+### for each loop
+```java
+for(String name : names){
+    System.out.println(name);
+}
+```
+### Iterator vs Iterable
+#### Iterator
 ```java
 public interface Iterator<E> {
   boolean hasNext();// Are there more elements?
@@ -237,6 +255,24 @@ public interface Iterator<E> {
   default void forEachRemaining(Consumer<? super E> action) 
 }
 ```
+#### Iterable
+```java
+public interface Iterable<E> {
+  Iterator<E> iterator();
+  default Spliterator<E> spliterator() {
+    return Spliterators.spliteratorUnknownSize(iterator(), 0);
+  }
+  default void forEach(Consumer<? super E> action) {
+    Objects.requireNonNull(action);
+    Spliterator<E> spliterator = spliterator();
+    while (spliterator.tryAdvance(action)) {
+      // Empty
+    }
+  }
+}
+```
+
+### Example: ArrayList
 ```java
 ArrayList<String> names = new ArrayList<>();
 for(int i = 0; i < 20; i++){
@@ -250,6 +286,51 @@ while(iterator.hasNext()){
     System.out.println(element);
 }
 ```
-### Iterators
-* each iterator has its own state(every time you get a iterator form .iterator(), it returns a new iterator)
-* iterator does not like the collection to be modified
+
+## Equality in OOP
+* `==`
+* `equals()`
+* Equality with objects(You have to define it)
+* Only you know what equivalence means
+* The `equals()` method is used to compare objects
+* The `==` operator is used to compare references
+```java
+public class Students {
+  private String name;
+  private int age;
+  public Students(String name, int age){
+    this.name = name;
+    this.age = age;
+  }
+  public String getName(){
+    return name;
+  }
+  public int getAge(){
+    return age;
+  }
+  public boolean equals(Object o){
+    if(o == null){
+      return false;
+    }
+    if(o == this){
+      return true;
+    }
+    if(!(o instanceof Students)){
+      return false;
+    }
+    Students s = (Students) o;
+    return s.getName().equals(this.getName()) && s.getAge() == this.getAge();
+  }
+  public int hashCode(){
+    return Objects.hash(name, age);
+  }
+}
+```
+
+## Hashing and hash codes
+### The hashing concept
+* using hash function to convert a object to a string value
+  ![](/images/hashing.png)
+  ![](/images/hash-function.png)
+* hash mapping is not one-to-one, it is one-to-many, but it could be one
+  ![](/images/hash-mapping.png)
