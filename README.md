@@ -53,6 +53,8 @@
     - [Return values](#return-values)
     - [Implementing the Comparable interface](#implementing-the-comparable-interface)
     - [sorting](#sorting)
+    - [Custom comparators](#custom-comparators)
+    - [Comparable vs Comparator](#comparable-vs-comparator)
 
 # Collections 
 
@@ -422,3 +424,32 @@ students.add(student3);
 
 students.sort(null);
 ```
+https://github.com/seaboyz/java-collection/blob/1483adbbbf89aeb3e4b26770065c8edd9d2f3d15/Sanbox/src/Student.java#L14
+
+### Custom comparators
+* By cource enrollment
+* But this is only one `compareTo()` method
+* Compartor here to sovle the problem
+
+### Comparable vs Comparator
+* Comparable 
+  * means I am a object that can be compared
+  * please compare me to other objects
+* Comparator
+  * for creating the object instance for `Comparable` to use
+```java
+public interface Comparator<T>{
+  public int compare(T o1, T o2);
+}
+```
+```java
+import java.util.Comparator;
+
+public class StudentLastNameComparator implements Comparator<Student> {
+    @Override
+    public int compare(Student s1, Student s2) {
+        return s1.getLastname().compareTo(s2.getLastname());
+    }
+}
+```
+  
