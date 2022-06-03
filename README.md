@@ -46,6 +46,13 @@
     - [hashcode in java](#hashcode-in-java)
     - [does two object with the same hashcode equal?](#does-two-object-with-the-same-hashcode-equal)
     - [What is hashcode for?](#what-is-hashcode-for)
+  - [Object ordering](#object-ordering)
+    - [Comparison](#comparison)
+    - [Comparable interface](#comparable-interface)
+    - [why the return type is `int`?](#why-the-return-type-is-int)
+    - [Return values](#return-values)
+    - [Implementing the Comparable interface](#implementing-the-comparable-interface)
+    - [sorting](#sorting)
 
 # Collections 
 
@@ -350,3 +357,57 @@ public int hashCode(){
 ### What is hashcode for?
 *The purpose of the hashCode() method is to provide a numeric representation of an object's contents so as to provide an alternate mechanism to loosely identify it. By default the hashCode() returns an integer that represents the internal memory address of the object
 
+## Object ordering
+### Comparison
+* what to compare?
+* there is object state in two objects
+* there is a clear definition of comparison of those values
+* Individual values or combination of values
+* not all objects are comparable 
+  * two database connection instances are not comparable
+* comparison is not defaut
+  
+### Comparable interface
+  * Indicates that an object is comparable
+``` java
+public interface Comparable<T>{
+  public int compareTo(T o);
+}
+```
+### why the return type is `int`?
+* Argument object is greater than this object
+* Argument object is lesser than this object
+* They are both the same(things that are compared are same)
+   
+### Return values
+* Negative value
+  * object `o` is greater than `this` object.
+* Positive value
+  * object `o` is lesser than `this` object.
+* Zero 
+  * they are both the same.
+
+### Implementing the Comparable interface
+```java
+public class Student implements Comparable<Student> {
+
+  @Override
+  public int compareTo(Student o){
+    if(this.id > o.getId()){
+      return 1;
+    }
+    if(this.id < o.getId()>){
+      return -1;
+    }
+    return 0;
+  }
+
+  // another way
+  public int compareTo(Student o){
+    return this.id - o.getId();
+  }
+
+}
+```
+
+### sorting
