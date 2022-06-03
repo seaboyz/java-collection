@@ -411,3 +411,14 @@ public class Student implements Comparable<Student> {
 ```
 
 ### sorting
+```java
+Student s1 = new Student(1,"john","doe","science");
+Student s1 = new Student(2,"tom","cat","history");
+Student s1 = new Student(3,"jane","doe","arts");
+ArrayList<Student> students = new ArrayList<>();
+students.add(student1);
+students.add(student2);
+students.add(student3);
+
+students.sort(null);
+```
