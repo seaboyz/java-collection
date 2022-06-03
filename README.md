@@ -56,6 +56,14 @@
     - [Custom comparators](#custom-comparators)
     - [Comparable vs Comparator](#comparable-vs-comparator)
     - [Sort method](#sort-method)
+  - [Collection interface](#collection-interface)
+    - [`Collections` vs `Collection` interface](#collections-vs-collection-interface)
+      - [`Collections` is a static utility class](#collections-is-a-static-utility-class)
+      - [`Collection` is an interface](#collection-is-an-interface)
+    - [Lowest comman denominator](#lowest-comman-denominator)
+      - [To support all collections](#to-support-all-collections)
+      - [Implements the `Iterable` interface](#implements-the-iterable-interface)
+    - [`Collection` is the root interface in the collection hierarchy.](#collection-is-the-root-interface-in-the-collection-hierarchy)
 
 # Collections 
 
@@ -459,5 +467,66 @@ public class StudentLastNameComparator implements Comparator<Student> {
 ```java
 students.sort(new StudentLastNameComparator());
 ```
+
+## Collection interface
+![](/images/java-collection-hierarchy.png)
+* `Map` interface is not inherited from the `Collection` interface
+
+### `Collections` vs `Collection` interface
+#### `Collections` is a static utility class
+```java
+Collections.sort(students, new StudentLastNameComparator());
+```
+#### `Collection` is an interface
+```java
+public interface Collection<E>{
+  public int size();
+  public boolean isEmpty();
+  public boolean contains(Object o);
+  public Iterator<E> iterator();
+  public Object[] toArray();
+  public <T> T[] toArray(T[] a);
+  public boolean add(E e);
+  public boolean remove(Object o);
+  public boolean containsAll(Collection<?> c);
+  public boolean addAll(Collection<? extends E> c);
+  public boolean removeAll(Collection<?> c);
+  public boolean retainAll(Collection<?> c);
+  public void clear();
+}
+```
+### Lowest comman denominator
+#### To support all collections
+#### Implements the `Iterable` interface
+```java
+Interface Queue<E> extends Collection<E>{
+  public boolean offer(E e);
+  public E poll();
+  public E peek();
+}
+Interface List<E> extends Collection<E>{
+  public E get(int index);
+  public E set(int index, E element);
+  public void add(int index, E element);
+  public E remove(int index);
+  public int indexOf(Object o);
+  public int lastIndexOf(Object o);
+  public ListIterator<E> listIterator();
+  public ListIterator<E> listIterator(int index);
+  public List<E> subList(int fromIndex, int toIndex);
+}
+Interface Set<E> extends Collection<E>{
+  public boolean add(E e);
+  public boolean remove(Object o);
+  public boolean containsAll(Collection<?> c);
+  public boolean addAll(Collection<? extends E> c);
+  public boolean removeAll(Collection<?> c);
+  public boolean retainAll(Collection<?> c);
+  public void clear();
+}
+```
+
+### `Collection` is the root interface in the collection hierarchy.
+
 
   
