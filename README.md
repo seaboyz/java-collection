@@ -64,6 +64,19 @@
       - [To support all collections](#to-support-all-collections)
       - [Implements the `Iterable` interface](#implements-the-iterable-interface)
     - [`Collection` is the root interface in the collection hierarchy.](#collection-is-the-root-interface-in-the-collection-hierarchy)
+    - [No direct implementation in the JDK](#no-direct-implementation-in-the-jdk)
+    - [Sub interfaces for collection types](#sub-interfaces-for-collection-types)
+  - [List](#list)
+    - [Common usecases](#common-usecases)
+      - [Storing items in order with index based access](#storing-items-in-order-with-index-based-access)
+    - [List interface](#list-interface)
+      - [Add](#add)
+      - [Remove](#remove)
+      - [Replace](#replace)
+      - [Inspect](#inspect)
+      - [Retrieve](#retrieve)
+      - [Process](#process)
+  - [ArrayList](#arraylist-1)
 
 # Collections 
 
@@ -527,6 +540,91 @@ Interface Set<E> extends Collection<E>{
 ```
 
 ### `Collection` is the root interface in the collection hierarchy.
+* Add
+  * add()
+  * addAll()
+* Remove
+  * remove()
+  * removeAll()
+  * retainAll()
+  * clear()
+* Inspect
+  * isEmpty()
+  * size()
+* Process
+  * iterator()
+  * stream()
+  * toArray()
+  * 
+### No direct implementation in the JDK
 
+### Sub interfaces for collection types 
+* Set
+* List
+* Queue
 
-  
+## List
+* An ***ordered*** collection of elements
+
+### Common usecases
+#### Storing items in order with index based access
+* List of students in the school
+* List of students with IDs
+  * Add (enroll) new students
+  * Process all students in order
+    * By ID for sending notifications
+    * By name for attendance
+    * By grade for scholarships
+  * Access a student's record given ID
+### List interface
+#### Add
+```java
+boolean add(E e);
+boolean AddAll(Collection<? extends E> c);
+void add(int index, E element);
+boolean addAll(int index, Collection<? extends E> c);
+```
+#### Remove
+```java
+E remove(int index);
+boolean remove(Object o);
+boolean removeAll(Collection<?> c);
+boolean retainAll(Collection<?> c);
+void clear();
+```
+#### Replace
+```java
+E set(int index, E element);
+default void replaceAll(UnaryOperator<E> operator);
+```
+#### Inspect
+```java
+boolean isEmpty();
+int size();
+boolean contains(Object o);
+boolean containsAll(Collection<?> c);
+int indexOf(Object o);
+int lastIndexOf(Object o);
+```
+#### Retrieve
+```java
+E get(int index);
+// returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive.
+List<E> subList(int fromIndex, int toIndex);
+```
+#### Process
+```java
+Iterator<E> iterator();
+ListIterator<E> listIterator();
+ListIterator<E> listIterator(int index);
+default Spliterator<E> spliterator();
+```
+
+## ArrayList
+* A list that is implemented as an array
+* The array is resized automatically when the list grows
+* The array is resized automatically when the list shrinks
+* The array is resized automatically when the list is cleared
+```java
+ArrayList<E> arrayList = new ArrayList<>();
+```
