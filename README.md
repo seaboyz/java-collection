@@ -43,6 +43,9 @@
   - [Equality in OOP](#equality-in-oop)
   - [Hashing and hash codes](#hashing-and-hash-codes)
     - [The hashing concept](#the-hashing-concept)
+    - [hashcode in java](#hashcode-in-java)
+    - [does two object with the same hashcode equal?](#does-two-object-with-the-same-hashcode-equal)
+    - [What is hashcode for?](#what-is-hashcode-for)
 
 # Collections 
 
@@ -334,3 +337,16 @@ public class Students {
   ![](/images/hash-function.png)
 * hash mapping is not one-to-one, it is one-to-many, but it could be one
   ![](/images/hash-mapping.png)
+### hashcode in java
+```java
+public int hashCode(){
+  return Objects.hash(name, age);
+}
+```
+### does two object with the same hashcode equal?
+* No.
+* It dependes the implementation of `equals()`
+
+### What is hashcode for?
+*The purpose of the hashCode() method is to provide a numeric representation of an object's contents so as to provide an alternate mechanism to loosely identify it. By default the hashCode() returns an integer that represents the internal memory address of the object
+
