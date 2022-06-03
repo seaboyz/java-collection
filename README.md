@@ -628,3 +628,8 @@ default Spliterator<E> spliterator();
 ```java
 ArrayList<E> arrayList = new ArrayList<>();
 ```
+![](images/ArrayList-stucture.png) 
+![](/images/arraylist-add.png)
+![](/images/array-list-add-index.png)
+![](/images/array-list-set.png)
+![](images/arraylist-remove.png)
