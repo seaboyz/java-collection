@@ -33,6 +33,9 @@
         - [Logarithmic Time](#logarithmic-time)
         - [Quadratic Time](#quadratic-time)
         - [How O-Notation matters](#how-o-notation-matters)
+  - [How iterators work?](#how-iterators-work)
+    - [interfaces](#interfaces)
+    - [Iterators](#iterators)
 
 # Collections 
 
@@ -223,3 +226,30 @@ for(int i = 0; i < 20; i++){
 * Implementation-based characteristics
   * Looking up by index(ArrayList vs LinkedList)
 * Underlying factor
+
+## How iterators work?
+### interfaces
+```java
+public interface Iterator<E> {
+  boolean hasNext();// Are there more elements?
+  E next();// Get the next element in the iteration
+  void remove();// Remove the last element returned by iterator
+  default void forEachRemaining(Consumer<? super E> action) 
+}
+```
+```java
+ArrayList<String> names = new ArrayList<>();
+for(int i = 0; i < 20; i++){
+    names.add("name " + i);
+}
+Iterator<String> iterator = names.iterator();
+// String element = iterator.next();
+
+while(iterator.hasNext()){
+    element = iterator.next();
+    System.out.println(element);
+}
+```
+### Iterators
+* each iterator has its own state(every time you get a iterator form .iterator(), it returns a new iterator)
+* iterator does not like the collection to be modified
