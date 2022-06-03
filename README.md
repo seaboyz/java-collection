@@ -55,6 +55,7 @@
     - [sorting](#sorting)
     - [Custom comparators](#custom-comparators)
     - [Comparable vs Comparator](#comparable-vs-comparator)
+    - [Sort method](#sort-method)
 
 # Collections 
 
@@ -452,4 +453,11 @@ public class StudentLastNameComparator implements Comparator<Student> {
     }
 }
 ```
+
+### Sort method
+* Tkes comparator instance as argument
+```java
+students.sort(new StudentLastNameComparator());
+```
+
   
