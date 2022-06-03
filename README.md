@@ -77,6 +77,7 @@
       - [Retrieve](#retrieve)
       - [Process](#process)
   - [ArrayList](#arraylist-1)
+    - [ArrayList performance](#arraylist-performance)
 
 # Collections 
 
@@ -633,3 +634,24 @@ ArrayList<E> arrayList = new ArrayList<>();
 ![](/images/array-list-add-index.png)
 ![](/images/array-list-set.png)
 ![](images/arraylist-remove.png)
+
+### ArrayList performance
+* get() - O(1)
+* set() - O(1)
+* contains - O(n)
+* remove(0) - O(n)
+  * 1. remove first element (1)
+  * 2. shift all other elements to the left (n-1)
+* add(0) - O(n)
+* add(Object o) to the end - ???
+  * Best case - O(1)
+  * Worst case - O(N)
+  <!-- amorized time(common situation) -->
+  * Most cases - O(1) 
+  * Finite amount of space
+  * doubles space when it runs out
+  * ![](images/arraylist-add-object%201.png)
+  * copy over all the existing element to the new arraylist
+  * Add new object to the position after the last element
+  
+
